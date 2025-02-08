@@ -1,5 +1,5 @@
-env
-.ipynb_checkpoints
-image.ipynb
-images
-
+env/
+images/
+binaries/
+.ipynb_checkpoints/
+image.ipynb/
