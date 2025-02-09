@@ -1,0 +1,23 @@
+
+body, html {
+	height: 100%;
+}
+
+body{
+    color: black;
+}
+
+canvas {
+    width: 512px;  /* Scale up display*/
+    height: 512px; 
+    image-rendering: pixelated; /* Prevents blurring, important af*/
+    image-rendering: crisp-edges; 
+    border: 1px solid black;
+}
+
+#canvas {
+    
+	cursor: crosshair;
+    position: fixed;
+
+}
