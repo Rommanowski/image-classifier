@@ -9,14 +9,26 @@
     <script src="index.js"></script>
 </head>
 <body>
-        <div class="controls">
-            <label for="brushSize">Brush Size:</label>
-            <input type="range" id="brushSize" min="3" max="6" value="3" />
-            <span id="brushValue">3</span>
-        </div>
-        <canvas id="canvas" width="128" height="128">
-            Sorry, your browser does not support canvas technology. 
-        </canvas>
+        <header>
+            <div class="main-menu">
+                <a class="active" href="#FreePlay">Free Play</a>
+                <a href="#QuickPlay">Quick Play</a>    
+            </div>
+        </header>
+        <main>
+            <div class="canvas-controls">
+                <label for="brushSize">Brush Size:</label>
+                <input type="range" id="brushSize" min="1" max="4" value="1" />
+                <span id="brushValue">1</span>
+                <input type="button" id="eraseButton" value="Erase">
+            </div>
+            <canvas id="canvas" width="128" height="128">
+                Sorry, your browser does not support canvas technology. <!--canvas isnt supported in every browser i guess-->
+            </canvas>
+        </main>
+        <footer>
+            <p>Gradient</p>
+        </footer>
         
 </body>
 </html>

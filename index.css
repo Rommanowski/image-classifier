@@ -1,10 +1,14 @@
-
+/* pallet 080708 3772FF 048A81 FDCA40 E6E8E6*/
 body, html {
 	height: 100%;
 }
 
 body{
-    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #080708;
+    background-color: #E6E8E6;
 }
 
 canvas {
@@ -12,12 +16,44 @@ canvas {
     height: 512px; 
     image-rendering: pixelated; /* Prevents blurring, important af*/
     image-rendering: crisp-edges; 
-    border: 1px solid black;
+    border: 1px solid #080708;
 }
 
 #canvas {
-    
 	cursor: crosshair;
-    position: fixed;
+    /*position: fixed;*/
+}
 
+.canvas-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.main-menu {
+
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.main-menu a {
+    float: left;
+    color: #E6E8E6;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.main-menu a:hover {
+    background-color: #FDCA40;
+    color: #080708;
+}
+
+/* Add a color to the active/current link */
+.main-menu a.active {
+    background-color: #048A81;
+    color: white;
 }
