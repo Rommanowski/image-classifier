@@ -9,7 +9,7 @@ model.eval()
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('canvas.html')
 
     
 @app.route('/compute/', methods=['POST'] )
