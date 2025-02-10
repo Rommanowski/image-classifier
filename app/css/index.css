@@ -1,0 +1,10 @@
+body{
+    background-color: aqua;
+}
+span{
+    color: red;
+}
+input{
+    width: 90%;
+    height: 50%;
+}
