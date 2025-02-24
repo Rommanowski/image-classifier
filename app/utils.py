@@ -4,6 +4,7 @@ import torch.nn as nn
 from torchvision import transforms
 import numpy as np
 from PIL import Image
+import os
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -74,44 +75,14 @@ user_transforms=transforms.Compose([
     transforms.Lambda(lambda x: sharpen_image(x, 0.6, 0.4)),
 ])
 
-# id's dictionary
-idx_to_class = {
-    0: 'airplane',
-    1: 'apple',
-    2: 'banana',
-    3: 'bat',
-    4: 'cow',
-    5: 'dog',
-    6: 'door',
-    7: 'eye',
-    8: 'fork',
-    9: 'guitar',
-    10: 'hexagon',
-    11: 'house',
-    12: 'ice-cream',
-    13: 'key',
-    14: 'moon',
-    15: 'panda',
-    16: 'pants',
-    17: 'pizza',
-    18: 'radio',
-    19: 'school-bus',
-    20: 'scissors',
-    21: 'skateboard',
-    22: 'snail',
-    23: 'snowflake',
-    24: 'snowman',
-    25: 'spoon',
-    26: 'strawberry',
-    27: 'streetlight',
-    28: 'submarine',
-    29: 'swan',
-    30: 'sword',
-    31: 'teddy-bear',
-    32: 'toilet',
-    33: 'watermelon',
-    34: 'zigzag'
-}
+labels = []
+with open("labels.txt", "r") as file:
+    labels = file.read().splitlines()
+
+idx_to_class = {}
+for k, v in enumerate(labels):
+    idx_to_class[k] = v
+
 
 def string_to_index(model, string_image):
     array_image = np.zeros(len(string_image))
