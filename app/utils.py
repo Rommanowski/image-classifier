@@ -42,7 +42,7 @@ class Net(nn.Module):
             nn.Linear(512, 256),
             nn.ReLU(),
             nn.Dropout(0.25),
-            nn.Linear(256, 35)
+            nn.Linear(256, 92)
         )
         
     def forward(self, x):
@@ -76,7 +76,7 @@ user_transforms=transforms.Compose([
 ])
 
 labels = []
-with open("labels.txt", "r") as file:
+with open("labels_extended.txt", "r") as file:
     labels = file.read().splitlines()
 
 idx_to_class = {}
@@ -85,6 +85,7 @@ for k, v in enumerate(labels):
 
 
 def string_to_index(model, string_image):
+    guess_treshold = 60
     array_image = np.zeros(len(string_image))
     for i in range(len(string_image)):
         array_image[i] = string_image[i] * 255
@@ -98,7 +99,7 @@ def string_to_index(model, string_image):
     index_predicted = np.argmax(output_numpy)
     probability = max(output_numpy)*100
     
-    if probability < 60:
+    if probability < guess_treshold:
         return '...'
     
     return idx_to_class[index_predicted]

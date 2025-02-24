@@ -4,8 +4,13 @@ from utils import *
 app = Flask(__name__)
 
 model = Net().to(device)
-model.load_state_dict(torch.load("model_inverted_dict.pth", weights_only=True))
+model.load_state_dict(torch.load("model_extended_temp_dict.pth", weights_only=True))
 model.eval()
+
+# model = torch.load("model_extended_temp.pth", weights_only=False)
+# torch.save(model.state_dict(), "model_extended_temp_dict.pth")
+# model.eval()
+
 
 @app.route('/')
 def home():
