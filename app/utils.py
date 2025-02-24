@@ -120,6 +120,14 @@ def string_to_index(model, string_image):
     array_image = array_image.reshape(128,128)
     array_image = Image.fromarray(array_image)
     array_image = user_transforms(array_image)
+    
+    softmax = nn.Softmax(dim=0)
     output = model(array_image)
-    index_predicted = np.argmax(output.detach().cpu().numpy().squeeze())
+    output_numpy = softmax(output).detach().cpu().numpy().squeeze()
+    index_predicted = np.argmax(output_numpy)
+    probability = max(output_numpy)*100
+    
+    if probability < 60:
+        return '...'
+    
     return idx_to_class[index_predicted]
