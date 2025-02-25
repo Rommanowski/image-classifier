@@ -24,6 +24,13 @@ canvas {
     /*position: fixed;*/
 }
 
+#to_draw{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(0, 71, 4);
+}
+
 .canvas-controls {
     display: flex;
     flex-direction: row;

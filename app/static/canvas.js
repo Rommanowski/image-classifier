@@ -8,11 +8,14 @@ window.onload = function() {
   let drawing = false;
   let brushSize = parseInt(brushSizeInput.value, 10) + brushBaseSize;
   
-  // Update brush size display and variable when slider changes
-  canvasErase.addEventListener("click", () => {
+  function clear_board(){
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
+  }
+  // Update brush size display and variable when slider changes
+  canvasErase.addEventListener("click", () => {
+    clear_board();
   });
 
   brushSizeInput.addEventListener("input", () => {
@@ -67,8 +70,12 @@ window.onload = function() {
       url: "/compute/",
       data: {value: binaryString},
     })
-    .done(function( msg ) {
-      $("#result").text(msg);
+    .done(function( prediction ) {
+      $("#result").text( prediction );
+      if(compare_results()){
+        set_target();
+        clear_board();
+      }
   })
   // Set up interval to send data every 10 seconds
 };

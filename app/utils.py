@@ -85,7 +85,7 @@ for k, v in enumerate(labels):
 
 
 def string_to_index(model, string_image):
-    guess_treshold = 60
+    guess_treshold = 30
     array_image = np.zeros(len(string_image))
     for i in range(len(string_image)):
         array_image[i] = string_image[i] * 255

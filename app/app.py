@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, jsonify
 from utils import *
 
 app = Flask(__name__)
@@ -13,8 +13,20 @@ model.eval()
 
 
 @app.route('/')
+def main():
+    return render_template('canvas_freeplay.html')
+
+@app.route('/PlayGame')
+def game():
+    return render_template('canvas_game.html')
+
+@app.route('/home')
 def home():
-    return render_template('canvas.html')
+    return render_template('home.html', val=labels)
+
+@app.route('/get_labels')
+def getlabels():
+    return jsonify(labels)
 
     
 @app.route('/compute/', methods=['POST'] )
