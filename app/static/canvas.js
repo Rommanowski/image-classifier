@@ -13,6 +13,13 @@ window.onload = function() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
   }
+
+  // function show_next_image(){
+  //   ctx.fillStyle = "white";
+  //   setTimeout(clear_board)
+  //   ctx.fillStyle = "black";
+  // }
+
   // Update brush size display and variable when slider changes
   canvasErase.addEventListener("click", () => {
     clear_board();
@@ -74,7 +81,8 @@ window.onload = function() {
       $("#result").text( prediction );
       if(compare_results()){
         set_target();
-        clear_board();
+        ctx.fillStyle = 'rgba(255,255,255, 0)';
+        setTimeout(clear_board, 2500);
       }
   })
   // Set up interval to send data every 10 seconds
