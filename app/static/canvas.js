@@ -9,6 +9,8 @@ window.onload = function() {
   let drawing = false;
   let brushSize = parseInt(brushSizeInput.value, 10) + brushBaseSize;
 
+  const correctGuess = new Audio('horn.mp3');
+
   const skip_button = document.getElementById("skip_button");
   skip_button.addEventListener("click", clear_board);
   skip_button.addEventListener("click", set_target);
@@ -90,6 +92,7 @@ window.onload = function() {
         $('#to_draw').css('color', 'rgb(0, 180, 9)');
         $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
+        correctGuess.play();
         setTimeout(show_next_image, 2000);
       }
   })
