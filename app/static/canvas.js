@@ -1,3 +1,4 @@
+
 window.onload = function() {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -14,11 +15,13 @@ window.onload = function() {
     ctx.fillStyle = "black";
   }
 
-  // function show_next_image(){
-  //   ctx.fillStyle = "white";
-  //   setTimeout(clear_board)
-  //   ctx.fillStyle = "black";
-  // }
+  function show_next_image(){
+    set_target();
+    clear_board();
+    $('#result').text('...');
+    $('#to_draw').css('color', 'rgb(0, 71, 4)');
+  }
+
 
   // Update brush size display and variable when slider changes
   canvasErase.addEventListener("click", () => {
@@ -80,12 +83,13 @@ window.onload = function() {
     .done(function( prediction ) {
       $("#result").text( prediction );
       if(compare_results()){
-        set_target();
+        $('#to_draw').css('color', 'rgb(0, 180, 9)');
+        $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
-        setTimeout(clear_board, 2500);
+        setTimeout(show_next_image, 2000);
       }
   })
   // Set up interval to send data every 10 seconds
 };
-setInterval(fun, 1000);
+setInterval(fun, 100);
 }
