@@ -19,9 +19,6 @@ function compare_results(){
     let prediction = $('#result').text();
     let target = $('#to_draw').text();
 
-    console.log(prediction);
-    console.log(target)
-
     if(target === prediction) return 1;
     else return 0;
 }
