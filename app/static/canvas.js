@@ -8,6 +8,10 @@ window.onload = function() {
   let brushBaseSize = 3;
   let drawing = false;
   let brushSize = parseInt(brushSizeInput.value, 10) + brushBaseSize;
+
+  const skip_button = document.getElementById("skip_button");
+  skip_button.addEventListener("click", clear_board);
+  skip_button.addEventListener("click", set_target);
   
   function clear_board(){
     ctx.fillStyle = "white";
@@ -81,7 +85,7 @@ window.onload = function() {
       data: {value: binaryString},
     })
     .done(function( prediction ) {
-      $("#result").text( prediction );
+      $("#result").text( prediction.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase()) );
       if(compare_results()){
         $('#to_draw').css('color', 'rgb(0, 180, 9)');
         $('#to_draw').text('good!');

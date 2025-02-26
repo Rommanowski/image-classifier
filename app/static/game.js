@@ -10,7 +10,7 @@ fetch('/get_labels')
   .then(data => {
     labels = data
     random_label = labels[getRandomInt(92)];
-    $('#to_draw').text(random_label);
+    $('#to_draw').text(random_label.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase()));
   })
   .catch(error => console.error('Błąd:', error));
 }
