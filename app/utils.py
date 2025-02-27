@@ -6,8 +6,6 @@ import numpy as np
 from PIL import Image
 import os
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
 # model
 class Net(nn.Module):
     def __init__(self):
@@ -65,7 +63,6 @@ def sharpen_image(tensor, upper_treshold=0.75, lower_treshold=0.25):
 user_transforms=transforms.Compose([
     transforms.Grayscale(num_output_channels=1),
     transforms.ToTensor(),
-    transforms.Lambda(lambda x: x.to(device)),
     transforms.Lambda(lambda x: 1-x),
     nn.MaxPool2d(kernel_size=2),
     transforms.Lambda(lambda x: sharpen_image(x, 0.7, 0.4)),
@@ -85,7 +82,7 @@ for k, v in enumerate(labels):
 
 
 def string_to_index(model, string_image):
-    guess_treshold = 75
+    guess_treshold = 40
     array_image = np.zeros(len(string_image))
     for i in range(len(string_image)):
         array_image[i] = string_image[i] * 255

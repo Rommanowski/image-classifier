@@ -10,6 +10,9 @@
     <script src = "{{ url_for('static', filename = 'freeplay.js') }}"></script>
 </head>
 <body>
+    <audio id="horn" src="{{ url_for('static', filename = 'horn.mp3') }}" ></audio>
+    <audio id="click" src="{{ url_for('static', filename = 'click.mp3') }}" ></audio>
+    <audio id="cheer" src="{{ url_for('static', filename = 'cheer.mp3') }}" ></audio>
         <header>
             <div class="main-menu">
                 <a class="active" href="/">Free Play</a>

@@ -9,13 +9,15 @@ window.onload = function() {
   let drawing = false;
   let brushSize = parseInt(brushSizeInput.value, 10) + brushBaseSize;
 
-  const correctGuess = new Audio('horn.mp3');
+  const correctGuess = document.getElementById("cheer");
+  const click = document.getElementById("click");
 
   const skip_button = document.getElementById("skip_button");
   skip_button.addEventListener("click", clear_board);
   skip_button.addEventListener("click", set_target);
   
   function clear_board(){
+    click.play()
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
@@ -35,6 +37,7 @@ window.onload = function() {
   });
 
   brushSizeInput.addEventListener("input", () => {
+    click.play()
     brushSize = parseInt(brushSizeInput.value, 10) + brushBaseSize;
     brushValueDisplay.textContent = brushSize - brushBaseSize;
   });
@@ -51,6 +54,7 @@ window.onload = function() {
   canvas.addEventListener("mouseup", () => drawing = false);
   canvas.addEventListener("mouseleave", () => drawing = false);
   canvas.addEventListener("mousemove", draw);
+  
   
   function draw(event) {
     if (!drawing) return;
@@ -92,11 +96,12 @@ window.onload = function() {
         $('#to_draw').css('color', 'rgb(0, 180, 9)');
         $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
-        correctGuess.play();
+        correctGuess.play()
         setTimeout(show_next_image, 2000);
       }
   })
   // Set up interval to send data every 10 seconds
 };
-setInterval(fun, 100);
+setInterval(fun, 1000);
+
 }
