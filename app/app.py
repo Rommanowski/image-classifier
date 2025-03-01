@@ -24,9 +24,14 @@ def game():
 def home():
     return render_template('home.html', val=labels)
 
+@app.route('/About')
+def about():
+    return render_template('about.html')
+
 @app.route('/get_labels')
 def getlabels():
     return jsonify(labels)
+
 
     
 @app.route('/compute/', methods=['POST'] )

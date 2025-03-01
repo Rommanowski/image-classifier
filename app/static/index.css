@@ -1,4 +1,23 @@
-/* pallet 080708 3772FF 048A81 FDCA40 E6E8E6*/
+/*vars declaration*/
+:root {
+    --c_background: #14213d;
+    --c_name: #fca311;
+    --c_text: #e5e5e5;
+
+}
+
+.bg-primary {
+    background-color: var(--c_background) !important; /* Your custom color */
+  }
+
+.text-primary {
+    color: var(--c_name) !important;
+}
+
+.text-secondary {
+    color: var(--c_text) !important;
+}
+
 body, html {
 	height: 100%;
 }
@@ -7,8 +26,12 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #080708;
-    background-color: #E6E8E6;
+    background-color: var(--c_background);
+    color: var(--c_text);
+}
+.card-body , .card{
+    border: 3px solid var(--c_name);
+    background-color: var(--c_background);
 }
 
 canvas {
@@ -69,4 +92,11 @@ footer{
     font-size: 100px;
     color: red;
     font-weight: bold;
+}
+
+/* for easier setup */
+.box {
+    background-color: lightblue;
+    border: 1px solid blue;
+    min-height: 50px;
 }
