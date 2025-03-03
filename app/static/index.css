@@ -101,3 +101,10 @@ footer{
     border: 1px solid blue;
     min-height: 50px;
 }
+.link {
+    text-decoration: none; 
+    color: inherit;
+}
+.link:hover {
+    text-decoration: underline; 
+}
