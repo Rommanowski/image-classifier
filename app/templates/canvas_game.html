@@ -16,16 +16,19 @@
     <audio id="horn" src="{{ url_for('static', filename = 'horn.mp3') }}" ></audio>
     <audio id="click" src="{{ url_for('static', filename = 'click.mp3') }}" ></audio>
     <audio id="cheer" src="{{ url_for('static', filename = 'cheer.mp3') }}" ></audio>
-        <header>
-            <div class="main-menu">
-                <a href="/">Free Play</a>
-                <a class="active" href="PlayGame">Play Game</a>    
-                <a href="About">About</a>
-            </div>
-            <div id="to_draw">
-                
-            </div>
-        </header>
+    <header class="mt-2 mb-2">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link text-primary"  href="/">Free Play</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="PlayGame">Play Game</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-primary" href="About">About</a>
+			</li>
+		</ul>
+	</header>
         <main>
             <div class="canvas-controls">
                 <label for="brushSize">Brush Size:</label>

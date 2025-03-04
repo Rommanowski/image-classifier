@@ -7,6 +7,7 @@
 
 }
 
+
 .bg-primary {
     background-color: var(--c_background) !important; /* Your custom color */
   }
@@ -36,8 +37,8 @@ body{
 }
 
 canvas {
-    width: 512px;  /* Scale up display*/
-    height: 512px; 
+    width: 700px;  /* Scale up display*/
+    height: 700px; 
     image-rendering: pixelated; /* Prevents blurring, important af*/
     image-rendering: crisp-edges; 
     border: 1px solid #080708;
