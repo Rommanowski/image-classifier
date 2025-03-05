@@ -6,7 +6,9 @@
     --c_text: #e5e5e5;
 
 }
-
+.form-range::-moz-range-thumb{
+    background-color: var(--c_name);
+}
 
 .bg-primary {
     background-color: var(--c_background) !important; /* Your custom color */

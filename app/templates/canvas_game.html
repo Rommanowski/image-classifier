@@ -13,38 +13,44 @@
     <link rel="stylesheet" href="../static/index.css">
 </head>
 <body>
-    <audio id="horn" src="{{ url_for('static', filename = 'horn.mp3') }}" ></audio>
-    <audio id="click" src="{{ url_for('static', filename = 'click.mp3') }}" ></audio>
-    <audio id="cheer" src="{{ url_for('static', filename = 'cheer.mp3') }}" ></audio>
-    <header class="mt-2 mb-2">
-		<ul class="nav nav-tabs">
-			<li class="nav-item">
-				<a class="nav-link text-primary"  href="/">Free Play</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="PlayGame">Play Game</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link text-primary" href="About">About</a>
-			</li>
-		</ul>
+	<audio id="horn" src="{{ url_for('static', filename = 'horn.mp3') }}" ></audio>
+	<audio id="click" src="{{ url_for('static', filename = 'click.mp3') }}" ></audio>
+	<audio id="cheer" src="{{ url_for('static', filename = 'cheer.mp3') }}" ></audio>
+	<header class="mt-2 mb-2">
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<a class="nav-link text-primary"  href="/">Free Play</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="PlayGame">Play Game</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-primary" href="About">About</a>
+		</li>
+	</ul>
 	</header>
-        <main>
-            <div class="canvas-controls">
-                <label for="brushSize">Brush Size:</label>
-                <input type="range" id="brushSize" min="1" max="4" value="1" />
-                <span id="brushValue">1</span>
-                <input type="button" id="eraseButton" value="Erase">
-            </div>
-            <canvas id="canvas" width="128" height="128">
-                Sorry, your browser does not support canvas technology. <!--canvas isnt supported in every browser i guess-->
-            </canvas>
-            <br>
-            <input id="skip_button" type="button" value="Skip"">
-        </main>
-        <footer>
-            <div id="result"></div>
-        </footer>
-        
+	<div class="container">
+		<div class="row">
+			<div class="col-4">
+				<div class="d-flex flex-column card canvas-controls h-100">
+					<div class="d-flex justify-content-around input-range">
+						<label class="text-primary" for="brushSize">Brush Size:</label>
+						<span class="text-primary" id="brushValue">1</span>
+						<input class="form-range w-50" type="range" id="brushSize" min="1" max="4" value="1" />
+					</div>
+					<div class="d-flex justify-content-center input-buttons">
+						<input type="button" class="btn btn-outline-warning" id="eraseButton" value="Erase">
+						<input  type="button" class="btn btn-outline-warning" id="skip_button" value="Skip">
+					</div>
+					<h1 class="d-flex justify-content-center text-primary" id="result"></h1>
+				</div>
+			</div>
+			<div class="col-8">
+				<canvas class="card" id="canvas" width="128" height="128">
+					Sorry, your browser does not support canvas technology. <!--canvas isnt supported in every browser i guess-->
+				</canvas>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>
