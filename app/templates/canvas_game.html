@@ -29,6 +29,29 @@
 		</li>
 	</ul>
 	</header>
+	<div class="modal" id="myModal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+	
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Modal Heading</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+	
+				<!-- Modal body -->
+				<div class="modal-body">
+					Modal body..
+				</div>
+	
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				</div>
+	
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-4">
@@ -38,9 +61,12 @@
 						<span class="text-primary" id="brushValue">1</span>
 						<input class="form-range w-50" type="range" id="brushSize" min="1" max="4" value="1" />
 					</div>
-					<div class="d-flex justify-content-center input-buttons">
-						<input type="button" class="btn btn-outline-warning" id="eraseButton" value="Erase">
-						<input  type="button" class="btn btn-outline-warning" id="skip_button" value="Skip">
+					<div class="d-flex justify-content-center input-buttons mt-3 gap-3">
+						<input type="button" class=" btn btn-outline-warning" id="eraseButton" value="Erase">
+						<input  type="button" class=" btn btn-outline-warning" id="skip_button" value="Skip">
+						<button type="button" class=" btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#myModal">
+							Tutorial
+						</button>
 					</div>
 					<h1 class="d-flex justify-content-center text-primary" id="result"></h1>
 				</div>
