@@ -27,7 +27,7 @@ window.onload = function() {
     set_target();
     clear_board();
     $('#result').text('...');
-    $('#to_draw').css('color', 'rgb(0, 71, 4)');
+    $('#to_draw');
   }
 
 
@@ -93,7 +93,6 @@ window.onload = function() {
     .done(function( prediction ) {
       $("#result").text( prediction.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase()) );
       if(compare_results()){
-        $('#to_draw').css('color', 'rgb(0, 180, 9)');
         $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
         correctGuess.play()

@@ -30,22 +30,26 @@
 	</header>
 	<div class="container">
 		<div class="row">
-			<div class="col-4">
-				<div class="d-flex flex-column card canvas-controls h-100">
-					<div class="d-flex justify-content-around input-range">
+			<div class="col-12 col-md-5">
+				<div class="d-flex flex-column justify-content-start card canvas-controls h-100 ">
+					<div class="d-flex justify-content-around input-range mt-2">
 						<label class="text-primary" for="brushSize">Brush Size:</label>
 						<span class="text-primary" id="brushValue">1</span>
 						<input class="form-range w-50" type="range" id="brushSize" min="1" max="4" value="1" />
 					</div>
 					<div class="d-flex justify-content-center input-buttons mt-3 gap-3">
-						<input type="button" class="btn btn-outline-warning" id="eraseButton" value="Erase">
+						<input type="button" class=" btn btn-outline-warning" id="eraseButton" value="Erase">						
 					</div>
-					<h1 class="d-flex justify-content-center text-primary" id="result"></h1>
+					<hr class="dashed">
+					<div class="d-flex text-primary">
+						<p class="p-3 text-right">AI guess: </p>
+						<h1 class="text-center" id="result"></h1>
+					</div> 
 				</div>
 			</div>
-			<div class="col-8">
-				<canvas class="card" id="canvas" width="128" height="128">
-					Sorry, your browser does not support canvas technology. <!--canvas isnt supported in every browser i guess-->
+			<div class="col-12 col-md-7">
+				<canvas class="card w-100" id="canvas" width="128" height="128">
+					Sorry, your browser does not support canvas technology. Try other browser. :( <!--canvas isnt supported in every browser i guess-->
 				</canvas>
 			</div>
 		</div>
