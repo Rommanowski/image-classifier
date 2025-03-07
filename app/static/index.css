@@ -109,3 +109,16 @@ footer{
 .link:hover {
     text-decoration: underline; 
 }
+
+.timer-container {
+    min-height: 300px;
+}
+.timer-display {
+    font-size: 4rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.completed {
+    animation: bounceIn 1s;
+    color: #28a745;
+}

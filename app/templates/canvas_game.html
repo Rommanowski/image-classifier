@@ -94,6 +94,14 @@
 						<p class="p-3 text-right">AI guess: </p>
 						<h1 class="text-center" id="result"></h1>
 					</div> 
+					<hr class="dashed">
+					<div class="timer-container d-flex flex-column align-items-center justify-content-center">
+						<div id="timer" class="timer-display mb-4">00:00</div>
+						<div class="btn-group">
+							<button id="startBtn" class="btn btn-primary">Start</button>
+							<button id="resetBtn" class="btn btn-secondary">Reset</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-12 col-md-7">
@@ -104,4 +112,5 @@
 		</div>
 	</div>	
 </body>
+<script src = "{{ url_for('static', filename = 'timer.js') }}"></script>
 </html>

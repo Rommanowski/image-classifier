@@ -97,7 +97,9 @@ window.onload = function() {
         $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
         correctGuess.play()
-        confetti();
+        confetti({
+          particleCount: 150
+        });
         setTimeout(show_next_image, 2000);
       }
   })
