@@ -24,6 +24,7 @@ window.onload = function() {
   }
 
   function show_next_image(){
+    
     set_target();
     clear_board();
     $('#result').text('...');
@@ -96,6 +97,7 @@ window.onload = function() {
         $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
         correctGuess.play()
+        confetti();
         setTimeout(show_next_image, 2000);
       }
   })
