@@ -1,7 +1,8 @@
-let timeLeft = 10;
+let timeLimit = 60;
+let timeLeft = timeLimit;
 let timerId = null;
 const timerDisplay = document.getElementById('timer');
-const startBtn = document.getElementById('startBtn');
+const playBtn = document.getElementById('playBtn');
 const resetBtn = document.getElementById('resetBtn');
 
 function formatTime(seconds) {
@@ -12,7 +13,7 @@ function formatTime(seconds) {
 
 function startTimer() {
     if (timerId) return;
-    startBtn.disabled = true;
+    playBtn.disabled = true;
     timerDisplay.classList.remove('completed');
 
     timerId = setInterval(() => {
@@ -23,7 +24,7 @@ function startTimer() {
             clearInterval(timerId);
             timerId = null;
             timerDisplay.classList.add('completed', 'animate__animated', 'animate__bounce');
-            startBtn.disabled = false;
+            playBtn.disabled = false;
         }
     }, 1000);
 }
@@ -31,11 +32,11 @@ function startTimer() {
 function resetTimer() {
     clearInterval(timerId);
     timerId = null;
-    timeLeft = 10;
+    timeLeft = timeLimit;
     timerDisplay.textContent = formatTime(timeLeft);
     timerDisplay.classList.remove('completed', 'animate__animated', 'animate__bounce');
-    startBtn.disabled = false;
+    playBtn.disabled = false;
 }
 
-startBtn.addEventListener('click', startTimer);
+playBtn.addEventListener('click', startTimer);
 resetBtn.addEventListener('click', resetTimer);

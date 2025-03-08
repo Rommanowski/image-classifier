@@ -9,6 +9,9 @@ window.onload = function() {
   let drawing = false;
   let brushSize = parseInt(brushSizeInput.value, 10) + brushBaseSize;
 
+  let points = 0;
+  let pointsDisplay = document.getElementById("points-display");
+
   const correctGuess = document.getElementById("cheer");
   const click = document.getElementById("click");
 
@@ -23,12 +26,18 @@ window.onload = function() {
     ctx.fillStyle = "black";
   }
 
+  function add_points(){
+    points += 1;
+    return `${points}`;
+  }
+
   function show_next_image(){
     
     set_target();
     clear_board();
     $('#result').text('...');
     $('#to_draw');
+    $('#points-display').text(add_points());
   }
 
 
@@ -96,15 +105,13 @@ window.onload = function() {
       if(compare_results()){
         $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
+        
         correctGuess.play()
-        confetti({
-          particleCount: 150
-        });
+        confetti({particleCount: 150});
         setTimeout(show_next_image, 2000);
       }
   })
   // Set up interval to send data every 10 seconds
 };
-setInterval(fun, 1000);
-
+setInterval(fun, 100);
 }

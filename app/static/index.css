@@ -116,9 +116,10 @@ footer{
 .timer-display {
     font-size: 4rem;
     font-weight: bold;
+    color: var(--c_name);
     transition: all 0.3s ease;
 }
 .completed {
     animation: bounceIn 1s;
-    color: #28a745;
+    color: var(--c_text);
 }
