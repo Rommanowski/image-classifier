@@ -1,23 +1,74 @@
 
 window.onload = function() {
+  //canvas and canvas controls releted vars
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
   const brushSizeInput = document.getElementById("brushSize");
   const brushValueDisplay = document.getElementById("brushValue");
   const canvasErase = document.getElementById("eraseButton");
+  const skip_button = document.getElementById("skip_button");
   let brushBaseSize = 3;
   let drawing = false;
   let brushSize = parseInt(brushSizeInput.value, 10) + brushBaseSize;
-
+  
+  //points releted vars
   let points = 0;
   let pointsDisplay = document.getElementById("points-display");
 
+  //sounds vars (should be modified in the future)
   const correctGuess = document.getElementById("cheer");
   const click = document.getElementById("click");
 
-  const skip_button = document.getElementById("skip_button");
+  //timer and timing releted vars
+  let timeLimit = 46;
+  let timeLeft = 0;
+  let timerId = null;
+  const timerDisplay = document.getElementById('timer');
+  const playBtn = document.getElementById('playBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const secs = (seconds % 60).toString().padStart(2, '0');
+      return `${mins}:${secs}`;
+  }
+
+  function startTimer() {
+      if (timerId) return;
+      playBtn.disabled = true;
+      timerDisplay.classList.remove('completed');
+      show_next_image();
+      timeLeft = timeLimit;
+      timerId = setInterval(() => {
+          timeLeft--;
+          timerDisplay.textContent = formatTime(timeLeft);
+
+          if (timeLeft <= 0) {
+              clearInterval(timerId);
+              timerId = null;
+              timerDisplay.classList.add('completed', 'animate__animated', 'animate__bounce');
+              playBtn.disabled = false;
+          }
+      }, 1000);
+  }
+
+  function resetTimer() {
+      clearInterval(timerId);
+      timerId = null;
+      timeLeft = timeLimit;
+      timerDisplay.textContent = formatTime(timeLeft);
+      timerDisplay.classList.remove('completed', 'animate__animated', 'animate__bounce');
+      playBtn.disabled = false;
+  }
+
+  playBtn.addEventListener('click', startTimer);
+  resetBtn.addEventListener('click', resetTimer);
+
   skip_button.addEventListener("click", clear_board);
-  skip_button.addEventListener("click", set_target);
+  skip_button.addEventListener("click", () =>{
+    clear_board();
+    set_target();
+  });
   
   function clear_board(){
     click.play()
@@ -27,12 +78,12 @@ window.onload = function() {
   }
 
   function add_points(){
-    points += 1;
+    if(timeLeft != 0)
+      points += 1;
     return `${points}`;
   }
 
   function show_next_image(){
-    
     set_target();
     clear_board();
     $('#result').text('...');
@@ -40,8 +91,6 @@ window.onload = function() {
     $('#points-display').text(add_points());
   }
 
-
-  // Update brush size display and variable when slider changes
   canvasErase.addEventListener("click", () => {
     clear_board();
   });
@@ -76,7 +125,6 @@ window.onload = function() {
     const x = Math.floor((event.clientX - rect.left) * scaleX);
     const y = Math.floor((event.clientY - rect.top) * scaleY);
     
-    // Draw a rectangle of size brushSize x brushSize at the calculated coordinates
     ctx.fillRect(x, y, brushSize, brushSize);
   }
   
@@ -105,10 +153,13 @@ window.onload = function() {
       if(compare_results()){
         $('#to_draw').text('good!');
         ctx.fillStyle = 'rgba(255,255,255, 0)';
-        
         correctGuess.play()
         confetti({particleCount: 150});
-        setTimeout(show_next_image, 2000);
+        setTimeout(show_next_image, 1000);
+      }
+      if(timeLeft == 0){
+        points = 0;
+        $('#points-display').text(`${points}`);
       }
   })
   // Set up interval to send data every 10 seconds
