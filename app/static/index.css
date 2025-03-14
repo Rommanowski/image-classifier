@@ -154,3 +154,7 @@ footer{
     padding: 15px 25px;
     text-align: center;
 }
+
+ul{
+    list-style-type: square;
+}
