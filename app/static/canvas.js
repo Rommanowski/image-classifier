@@ -20,17 +20,31 @@ window.onload = function() {
   const click = document.getElementById("click");
 
   //timer and timing releted vars
-  let timeLimit = 46;
+  let timeLimit = 61;
   let timeLeft = 0;
   let timerId = null;
   const timerDisplay = document.getElementById('timer');
+  const showScoreDisplay = document.getElementById('pointsShow')
   const playBtn = document.getElementById('playBtn');
   const resetBtn = document.getElementById('resetBtn');
+
+  const popUp = document.getElementById("popUp");
+  const popUpCloseBtn = document.getElementById("closePopUp");
+
+  popUpCloseBtn.addEventListener("click", () => {
+    popUp.classList.remove("open");
+  });
 
   function formatTime(seconds) {
       const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
       const secs = (seconds % 60).toString().padStart(2, '0');
       return `${mins}:${secs}`;
+  }
+
+
+  function showScore(){
+    showScoreDisplay.textContent = points;
+    popUp.classList.add("open");
   }
 
   function startTimer() {
@@ -44,6 +58,7 @@ window.onload = function() {
           timerDisplay.textContent = formatTime(timeLeft);
 
           if (timeLeft <= 0) {
+              showScore();
               clearInterval(timerId);
               timerId = null;
               timerDisplay.classList.add('completed', 'animate__animated', 'animate__bounce');

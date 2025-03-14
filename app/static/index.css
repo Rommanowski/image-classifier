@@ -123,3 +123,34 @@ footer{
     animation: bounceIn 1s;
     color: var(--c_text);
 }
+
+.pop-up{
+    background-color:rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.pop-up.open{
+    opacity: 1;
+    z-index: 999;
+}
+
+.pop-up.close{
+    opacity: 0;
+}
+
+.pop-up-inner{
+    background-color: var(--c_background);
+    border-radius: 5px;
+    box-shadow:  0 1px 4px rgba(0,0, 0, 0.7);
+    color: var(--c_name);
+    padding: 15px 25px;
+    text-align: center;
+}
