@@ -41,7 +41,6 @@ window.onload = function() {
       return `${mins}:${secs}`;
   }
 
-
   function showScore(){
     showScoreDisplay.textContent = points;
     popUp.classList.add("open");
@@ -51,7 +50,10 @@ window.onload = function() {
       if (timerId) return;
       playBtn.disabled = true;
       timerDisplay.classList.remove('completed');
-      show_next_image();
+
+      if(timeLeft != 0) points= -1;       //show next img updates points so changing points
+      show_next_image();                  //to -1 now results in 0 showing later 
+
       timeLeft = timeLimit;
       timerId = setInterval(() => {
           timeLeft--;
@@ -68,9 +70,13 @@ window.onload = function() {
   }
 
   function resetTimer() {
+      points=0; 
+      $('#points-display').text('0');
+
       clearInterval(timerId);
       timerId = null;
       timeLeft = timeLimit;
+      
       timerDisplay.textContent = formatTime(timeLeft);
       timerDisplay.classList.remove('completed', 'animate__animated', 'animate__bounce');
       playBtn.disabled = false;
@@ -177,7 +183,7 @@ window.onload = function() {
         $('#points-display').text(`${points}`);
       }
   })
-  // Set up interval to send data every 10 seconds
+  // Set up interval to send data every 0,5 seconds
 };
-setInterval(fun, 100);
+setInterval(fun, 500);
 }

@@ -27,10 +27,10 @@ window.onload = function() {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "black"; // Set drawing color to black
       
-      // Mouse event listeners for drawing
+      // listeners for drawing
       canvas.addEventListener("mousedown", (event) => {
         drawing = true;
-        draw(event); // Draw immediately on click
+        draw(event); 
       });
       canvas.addEventListener("mouseup", () => drawing = false);
       canvas.addEventListener("mouseleave", () => drawing = false);
@@ -73,7 +73,7 @@ window.onload = function() {
         .done(function( prediction ) {
           $("#result").text( prediction.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase()) );
       })
-      // Set up interval to send data every 10 seconds
+      // Set up interval to send data every 0,5 seconds
     };
-    setInterval(fun, 100);
+    setInterval(fun, 500);
     }

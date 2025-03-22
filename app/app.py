@@ -8,7 +8,6 @@ app = Flask(__name__)
 # model.eval()
 
 model = torch.load("model_extended_final.pth", weights_only=False, map_location=torch.device('cpu'))
-torch.save(model.state_dict(), "model_extended_final_dict.pth")
 model.eval()
 
 
@@ -31,7 +30,6 @@ def about():
 @app.route('/get_labels')
 def getlabels():
     return jsonify(labels)
-
 
     
 @app.route('/compute/', methods=['POST'] )
