@@ -23,6 +23,7 @@ Make sure you have Python 3.8+ and pip installed.
 
 Install dependencies using:
 ```sh
+pip install utils
 pip install flask
 pip install torch
 pip install torchvision
